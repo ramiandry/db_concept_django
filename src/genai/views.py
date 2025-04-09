@@ -1,5 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from .train import train
 import requests
 
 @api_view(['POST'])
@@ -16,7 +17,7 @@ def chat(request):
         "messages": [
             {
                 "role": "user",
-                "content": user_message
+                "content": train(user_message)
             }
         ],
         "max_tokens": 500,

@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 # Modèle Conversation pour l'historique des conversations
 class Conversation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # l'utilisateur associé à la conversation
+    titre = models.CharField(max_length=50, default="New chat")
     created_at = models.DateTimeField(auto_now_add=True)  # date de création de la conversation
     updated_at = models.DateTimeField(auto_now=True)  # date de la dernière mise à jour de la conversation
 

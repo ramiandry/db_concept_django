@@ -6,11 +6,13 @@ from django.contrib.auth.models import User
 
 
 class ConversationSerializer(serializers.ModelSerializer):
-    messages = MessageSerializer(many=True, read_only=True)  # Sérialisation des messages dans une conversation
+    messages = MessageSerializer(many=True, read_only=True)
+    user = serializers.StringRelatedField(read_only=True)  # ← ici, c’est juste pour affichage
 
     class Meta:
         model = Conversation
-        fields = '__all__'  # Sérialiser tous les champs du modèle Conversation
+        fields = ['id', 'titre', 'created_at', 'updated_at', 'messages', 'user']
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

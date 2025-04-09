@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import ConversationListCreate
+from .views import ConversationViewSet
 
 urlpatterns = [
-    path('', ConversationListCreate.as_view(), name='conversation-list-create'),
+    path('', ConversationViewSet.as_view({'get': 'list', 'post': 'create'})),
+    path('<int:pk>/', ConversationViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'})),
 ]
